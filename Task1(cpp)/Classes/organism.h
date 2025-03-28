@@ -8,12 +8,13 @@ public:
     typedef struct {
         int x, y;
     } Position;
-    Organism(int strength, int initiative, World* world);
+    Organism(int strength, int initiative);
     ~Organism();
     virtual void action() = 0; 
     virtual void collision() = 0; 
     virtual void draw();
     Position getPosition();
+    void setWorld(World* world);
 
 protected:
     char chr; 

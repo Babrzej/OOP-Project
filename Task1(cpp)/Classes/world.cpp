@@ -2,7 +2,11 @@
 #include <iostream>
 
 World::World(std::vector<Organism*> organisms) 
-    : organisms(organisms) {}
+    : organisms(organisms) {
+    for(int i = 0; i < organisms.size(); i++) {
+        organisms[i]->setWorld(this);
+    }
+}
 
 void World::drawWorld() {
     // Draw the top border

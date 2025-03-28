@@ -1,0 +1,1 @@
+g++ -o main main.cpp Classes/organism.cpp Classes/animal.cpp Classes/world.cpp Classes/Animals/antelope.cpp Classes/Animals/fox.cpp Classes/Animals/wolf.cpp Classes/Animals/turtle.cpp Classes/Animals/sheep.cpp Classes/Animals/human.cpp

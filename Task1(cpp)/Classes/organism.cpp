@@ -2,11 +2,15 @@
 #include <iostream>
 
 // Default constructor
-Organism::Organism(int strength, int initiative, World* world) 
+Organism::Organism(int strength, int initiative) 
     : strength(strength), initiative(initiative), position(position), world(nullptr) {}
 
 // Destructor
 Organism::~Organism() {}
+
+void Organism::setWorld(World* world) {
+    this->world = world;
+}
 
 // Draw method
 void Organism::draw() {

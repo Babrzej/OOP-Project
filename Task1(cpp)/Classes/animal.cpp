@@ -1,8 +1,8 @@
 #include "animal.h"
 #include <cstdlib>
 
-Animal::Animal(int strength, int initiative, World* world)
-    : Organism(strength, initiative, world) {}
+Animal::Animal(int strength, int initiative)
+    : Organism(strength, initiative) {}
 
 void Animal::action() {
 
