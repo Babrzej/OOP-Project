@@ -1,15 +1,20 @@
 #pragma once
-#include "World.h"
+
+class World; 
+
 class Organism {
 
-private:
+protected:
+    char chr; 
     int strength;
     int initiative;
     int pX, pY;
-    World* world;
+    World* world = nullptr;
 
 public:
-    Organism Organism::action();
-    Organism Organism::collision();
-    Organism Organism::draw();
+    Organism(int strength, int initiative, int pX, int pY, World* world);
+    ~Organism();
+    virtual void action() = 0; 
+    virtual void collision() = 0; 
+    virtual void draw();
 };

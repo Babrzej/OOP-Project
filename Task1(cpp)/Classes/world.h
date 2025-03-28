@@ -6,6 +6,6 @@ class World {
         Organism *organisms;
     
     public:
-        World World::makeTurn();
-        World World::drawWorld();
+        void makeTurn();
+        void drawWorld();
 };
