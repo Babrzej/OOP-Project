@@ -1,10 +1,9 @@
 #include "animal.h"
 #include <cstdlib>
 
-Animal::Animal(int strength, int initiative, int pX, int pY, World* world)
-    : Organism(strength, initiative, pX, pY, world) {
-    chr = 'H'; // Set the character representation for Human
-}
+Animal::Animal(int strength, int initiative, World* world)
+    : Organism(strength, initiative, world) {}
+
 void Animal::action() {
 
     int drc = std::rand() % static_cast<int>(Direction::COUNT);
@@ -12,13 +11,13 @@ void Animal::action() {
 
     switch(direction) {
         case UP:
-        this->pY -= 1;
+        position.y -= 1;
         case DOWN:
-        this->pY += 1;
+        position.y += 1;
         case LEFT:
-        this->pX -= 1;
+        position.x -= 1;
         case RIGHT:
-        this->pX += 1;
+        position.x += 1;
     }
 }
 

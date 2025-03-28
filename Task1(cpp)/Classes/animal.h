@@ -12,7 +12,7 @@ enum Direction {
 class Animal : public Organism {
     public:
         // constructors
-        Animal(int strength, int initiative, int pX, int pY, World* world);
+        Animal(int strength, int initiative, World* world);
 
         // other methods
         void action() override;
