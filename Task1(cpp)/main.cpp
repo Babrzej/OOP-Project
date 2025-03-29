@@ -13,5 +13,7 @@ int main() {
     std::vector<Organism*> organisms = {&h, &t, &a, &f, &w, &s};
     World world(organisms);
     world.drawWorld();
+    world.makeTurn();
+    world.drawWorld();
     return 0;
 }

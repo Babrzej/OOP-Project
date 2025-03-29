@@ -10,4 +10,5 @@ public:
     World(std::vector<Organism*> organisms);
     void makeTurn();
     void drawWorld();
+    std::vector<Organism*> getOrganisms();
 };

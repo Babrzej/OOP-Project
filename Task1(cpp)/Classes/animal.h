@@ -17,4 +17,5 @@ class Animal : public Organism {
         // other methods
         void action() override;
         void collision() override;
+        void moveBack();
 };

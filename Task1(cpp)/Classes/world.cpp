@@ -3,8 +3,8 @@
 
 World::World(std::vector<Organism*> organisms) 
     : organisms(organisms) {
-    for(int i = 0; i < organisms.size(); i++) {
-        organisms[i]->setWorld(this);
+    for(Organism* organism : organisms) {
+        organism->setWorld(this);
     }
 }
 
@@ -20,10 +20,10 @@ void World::drawWorld() {
         std::cout << '*'; // Left border
         for (int x = 1; x < width - 1; x++) {
             bool organismFound = false;
-            for (int k = 0; k < organisms.size(); k++) {
-                Organism::Position pos = organisms[k]->getPosition();
+            for (Organism* organism : organisms) {
+                Organism::Position pos = organism->getPosition();
                 if (pos.x == x && pos.y == y) {
-                    organisms[k]->draw(); // Draw the organism
+                    organism->draw(); // Draw the organism
                     organismFound = true;
                     break;
                 }
@@ -41,4 +41,14 @@ void World::drawWorld() {
         std::cout << '*';
     }
     std::cout << std::endl;
+}
+
+void World::makeTurn() {
+    for(Organism* organism : organisms) {
+        organism->action();
+    }
+}
+
+std::vector<Organism*> World::getOrganisms() {
+    return this->organisms;
 }

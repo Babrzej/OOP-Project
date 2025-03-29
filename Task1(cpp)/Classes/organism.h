@@ -13,13 +13,13 @@ public:
     virtual void action() = 0; 
     virtual void collision() = 0; 
     virtual void draw();
-    Position getPosition();
+    const Position getPosition();
     void setWorld(World* world);
 
 protected:
     char chr; 
     int strength;
     int initiative;
-    Position position;
+    Position position, prevPosition;
     World* world = nullptr;
 };
