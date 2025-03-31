@@ -6,7 +6,7 @@ World::World(std::vector<Organism*> organisms)
     : organisms(organisms) {
     for(Organism* organism : organisms) {
         organism->setWorld(this);
-        this->grid[organism->position().x][organism->position().y] = {organism, true};
+        this->occupyGrid(organism);
     }
 }
 
@@ -18,7 +18,7 @@ int World::width() const {
     return this->_width;
 }
 void World::drawWorld() {
-    system("cls");
+    //system("cls");
     // Draw the top border
     for (int x = 0; x < _width + 2; x++) { // Add 2 for borders
         std::cout << '*';
@@ -59,9 +59,35 @@ void World::makeTurn() {
         if(this->grid[organism->position().x][organism->position().y].occupied == true) {
             organism->collision(this->grid[organism->position().x][organism->position().y].organism);
         }
+        else this->occupyGrid(organism);
     }
 }
 
 std::vector<Organism*> World::getOrganisms() {
     return this->organisms;
+}
+
+void World::kill(Organism* organism) {
+    // Remove the organism from the vector
+    for (auto it = organisms.begin(); it != organisms.end(); ++it) {
+        if (*it == organism) {
+            organisms.erase(it);
+            break;
+        }
+    }
+
+    // Delete the organism to free memory
+    delete organism;
+}
+
+void World::freeGrid(Organism* organism) {
+    Organism::Position pos = organism->position();
+    grid[pos.x][pos.y].organism = nullptr;
+    grid[pos.x][pos.y].occupied = false;
+}
+
+void World::occupyGrid(Organism* organism) {
+    Organism::Position pos = organism->position();
+    grid[pos.x][pos.y].organism = organism;
+    grid[pos.x][pos.y].occupied = true;
 }

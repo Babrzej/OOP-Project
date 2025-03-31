@@ -3,9 +3,10 @@
 
 #define STRENGTH 3
 #define INITIATIVE 7
+#define RANGE 1
 
 Fox::Fox() 
-    : Animal(STRENGTH, INITIATIVE) {
+    : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'F';
     _position = {4, 4};
 }

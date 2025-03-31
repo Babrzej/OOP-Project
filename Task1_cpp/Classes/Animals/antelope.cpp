@@ -2,9 +2,10 @@
 
 #define STRENGTH 4
 #define INITIATIVE 4
+#define RANGE 2
 
 Antelope::Antelope() 
-    : Animal(STRENGTH, INITIATIVE) {
+    : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'A';
     _position = {3, 3};
 }

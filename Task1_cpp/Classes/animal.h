@@ -14,7 +14,7 @@ enum Direction {
 class Animal : public Organism {
     public:
         // constructors
-        Animal(int strength, int initiative);
+        Animal(int strength, int initiative, int range);
 
         // other methods
         void action() override;
@@ -22,4 +22,5 @@ class Animal : public Organism {
         void moveBack();
     private:
         Direction restriction;
+        int range;
 };

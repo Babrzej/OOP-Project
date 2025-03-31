@@ -12,6 +12,9 @@ class World {
     void makeTurn();
     void drawWorld();
     std::vector<Organism*> getOrganisms();
+    void kill(Organism* organism); // Method to remove an organism
+    void freeGrid(Organism* organism);   // Free a grid cell based on organism
+    void occupyGrid(Organism* organism); // Occupy a grid cell based on organism
 
     int width() const;  // Inner width
     int height() const; // Inner height

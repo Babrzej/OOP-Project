@@ -2,8 +2,10 @@
 
 #define STRENGTH 5
 #define INITIATIVE 4
+#define RANGE 1
+
 Human::Human() 
-    : Animal(STRENGTH, INITIATIVE) {
+    : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'H';
     _position = {1, 1};
 }

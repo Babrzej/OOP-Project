@@ -21,6 +21,7 @@ protected:
     char chr; 
     int _strength;
     int initiative;
+    int age;
     Position _position, _prevPosition;
     World* world = nullptr;
 };
