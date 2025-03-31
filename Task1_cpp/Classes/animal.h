@@ -1,5 +1,7 @@
 #pragma once 
 #include "organism.h"
+#include "world.h"
+#include <cstdlib>
 
 enum Direction {
     UP,
@@ -16,6 +18,8 @@ class Animal : public Organism {
 
         // other methods
         void action() override;
-        void collision() override;
+        void collision(Organism* other) override;
         void moveBack();
+    private:
+        Direction restriction;
 };

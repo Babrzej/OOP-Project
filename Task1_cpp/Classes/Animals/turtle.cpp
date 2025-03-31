@@ -6,5 +6,9 @@
 Turtle::Turtle() 
     : Animal(STRENGTH, INITIATIVE) {
     chr = 'T';
-    position = {2, 2};
+    _position = {2, 2};
+}
+
+void Turtle::action() {
+    if (std::rand() % 4 == 0) Animal::action();
 }

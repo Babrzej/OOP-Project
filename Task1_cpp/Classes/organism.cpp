@@ -1,9 +1,10 @@
 #include "organism.h"
+#include "world.h"
 #include <iostream>
 
 // Default constructor
 Organism::Organism(int strength, int initiative) 
-    : strength(strength), initiative(initiative), position(position), world(nullptr) {}
+    : _strength(strength), initiative(initiative), world(nullptr) {}
 
 // Destructor
 Organism::~Organism() {}
@@ -17,8 +18,16 @@ void Organism::draw() {
     std::cout << chr; // Print the character representation of the organism
 }
 
-const Organism::Position Organism::getPosition() {
-    return this->position;
+Organism::Position Organism::position() const {
+    return this->_position;
 }
+
+int Organism::strength() const {
+    return this->_strength;
+}
+
+
+
+
 
 

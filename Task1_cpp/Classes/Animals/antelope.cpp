@@ -6,5 +6,5 @@
 Antelope::Antelope() 
     : Animal(STRENGTH, INITIATIVE) {
     chr = 'A';
-    position = {3, 3};
+    _position = {3, 3};
 }

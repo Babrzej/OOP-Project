@@ -5,5 +5,5 @@
 Human::Human() 
     : Animal(STRENGTH, INITIATIVE) {
     chr = 'H';
-    position = {1, 1};
+    _position = {1, 1};
 }

@@ -4,4 +4,5 @@
 class Turtle : public Animal {
 public:
     Turtle();
+    void action() override;
 };

@@ -11,15 +11,16 @@ public:
     Organism(int strength, int initiative);
     ~Organism();
     virtual void action() = 0; 
-    virtual void collision() = 0; 
+    virtual void collision(Organism* other) = 0; 
     virtual void draw();
-    const Position getPosition();
+    Position position() const;
+    int strength() const;
     void setWorld(World* world);
 
 protected:
     char chr; 
-    int strength;
+    int _strength;
     int initiative;
-    Position position, prevPosition;
+    Position _position, _prevPosition;
     World* world = nullptr;
 };
