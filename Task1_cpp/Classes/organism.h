@@ -5,9 +5,14 @@ class World;
 class Organism {
 
 public:
-    typedef struct {
+    struct Position{
         int x, y;
-    } Position;
+        Position() : x(0), y(0) {};
+        Position(int x, int y) : x(x), y(y) {};
+        bool operator==(const Position& other) const {
+            return x == other.x && y == other.y;
+        }
+    };
     Organism(int strength, int initiative);
     ~Organism();
     virtual void action() = 0; 

@@ -14,3 +14,12 @@ void Turtle::action() {
     if (std::rand() % 4 == 0) Animal::action();
     else this->world->freeGrid(this); 
 }
+
+void Turtle::collision(Organism* other) {
+    if(other->strength() > 5) {
+        Animal::collision(other);
+    }
+    else {
+        
+    }
+}
