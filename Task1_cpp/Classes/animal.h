@@ -3,13 +3,7 @@
 #include "world.h"
 #include <cstdlib>
 
-enum Direction {
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT,
-    COUNT
-};
+
 
 class Animal : public Organism {
     public:

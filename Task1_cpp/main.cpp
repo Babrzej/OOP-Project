@@ -10,7 +10,14 @@ int main() {
     Fox f;
     Wolf w;
     Sheep s;
-    std::vector<Organism*> organisms = {&h, &t, &a, &f, &w, &s};
+
+    Thistle th;
+    Hogweed hw;
+    Guarana gu;
+    Grass gr;
+    Belladonna be;
+
+    std::vector<Organism*> organisms = {&h, &t, &a, &f, &w, &s, &th, &hw, &gu, &gr, &be};
     World world(organisms);
     world.drawWorld();
     world.makeTurn();

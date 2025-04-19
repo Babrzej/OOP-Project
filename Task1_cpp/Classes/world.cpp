@@ -31,7 +31,7 @@ void World::drawWorld() {
         for (int x = 0; x < _width; x++) {
             bool organismFound = false;
             for (Organism* organism : organisms) {
-                Organism::Position pos = organism->position(); // Use getter
+                Position pos = organism->position(); // Use getter
                 if (pos.x == x && pos.y == y) {
                     organism->draw(); // Draw the organism
                     organismFound = true;
@@ -81,13 +81,18 @@ void World::kill(Organism* organism) {
 }
 
 void World::freeGrid(Organism* organism) {
-    Organism::Position pos = organism->position();
+    Position pos = organism->position();
     grid[pos.x][pos.y].organism = nullptr;
     grid[pos.x][pos.y].occupied = false;
 }
 
 void World::occupyGrid(Organism* organism) {
-    Organism::Position pos = organism->position();
+    Position pos = organism->position();
     grid[pos.x][pos.y].organism = organism;
     grid[pos.x][pos.y].occupied = true;
+}
+
+bool World::isGridOccupied(Position pos) {
+    if(grid[pos.x][pos.y].occupied) return true;
+    return false;
 }

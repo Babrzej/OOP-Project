@@ -18,7 +18,7 @@ void Organism::draw() {
     std::cout << chr; // Print the character representation of the organism
 }
 
-Organism::Position Organism::position() const {
+Position Organism::position() const {
     return this->_position;
 }
 

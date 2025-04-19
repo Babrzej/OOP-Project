@@ -1,4 +1,5 @@
 #pragma once
+#include "position.h"
 #include <vector>
 class Organism; // Forward declaration of Organism
 
@@ -15,6 +16,7 @@ class World {
     void kill(Organism* organism); // Method to remove an organism
     void freeGrid(Organism* organism);   // Free a grid cell based on organism
     void occupyGrid(Organism* organism); // Occupy a grid cell based on organism
+    bool isGridOccupied(Position Pos);
 
     int width() const;  // Inner width
     int height() const; // Inner height
