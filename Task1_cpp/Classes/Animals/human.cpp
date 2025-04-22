@@ -25,6 +25,14 @@ Human::Human()
     this->cooldown = COOLDOWN;
 }
 
+int Human::getDuration() const {
+    return this->duration;
+}
+
+int Human::getCooldown() const {
+    return this->cooldown;
+}
+
 void Human::action() {
 
     this->world->freeGrid(this); // Free the previous grid cell
@@ -33,11 +41,9 @@ void Human::action() {
     if(this->duration >=0) {
         this->whilePowered();
         this->duration--;
-        std::cout << duration << std::endl;
     }
 
     int key = _getch(); // Get the first key press
-    std::cout<< key << std::endl;
     Direction direction = COUNT;
 
     // Map arrow keys to directions

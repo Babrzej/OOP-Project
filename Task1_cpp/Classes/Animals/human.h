@@ -5,6 +5,9 @@ class Human : public Animal {
 public:
     Human();
     void action() override;
+    int getDuration() const;
+    int getCooldown() const;
+
 private:
     void activatePower();
     void whilePowered();
