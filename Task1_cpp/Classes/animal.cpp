@@ -8,7 +8,7 @@ Animal::Animal(int strength, int initiative, int range)
 
     void Animal::action() {
         this->restriction = COUNT; // Reset restriction
-        this->_prevPosition = this->_position; // Save the previous position
+        this->prevPosition = this->position; // Save the previous position
     
         int drc;
         Direction direction = COUNT;
@@ -25,26 +25,26 @@ Animal::Animal(int strength, int initiative, int range)
             // Move the animal based on the chosen direction
             switch (direction) {
                 case UP:
-                    _position.y -= this->range;
+                    position.y -= this->range;
                     break;
                 case DOWN:
-                    _position.y += this->range;
+                    position.y += this->range;
                     break;
                 case LEFT:
-                    _position.x -= this->range;
+                    position.x -= this->range;
                     break;
                 case RIGHT:
-                    _position.x += this->range;
+                    position.x += this->range;
                     break;
             }
     
             // Check if the new position is valid
-            if (_position.x >= 0 && _position.x < world->width() &&
-                _position.y >= 0 && _position.y < world->height()) {
+            if (position.x >= 0 && position.x < world->getWidth() &&
+                position.y >= 0 && position.y < world->getHeight()) {
                 validMove = true; // Exit the loop if the move is valid
             } else {
                 // Revert to the previous position and retry
-                this->_position = this->_prevPosition;
+                this->position = this->prevPosition;
                 this->restriction = direction; // Restrict the invalid direction
             }
             this->world->freeGrid(this); // Free the previous grid cell
@@ -52,12 +52,12 @@ Animal::Animal(int strength, int initiative, int range)
     }
 
 void Animal::collision(Organism* other) {
-    if(this->strength() >= other->strength()) {
-        this->world->kill(other);
+    if(this->getStrength() >= other->getStrength()) {
+        other->die();
         this->world->occupyGrid(this);        
     }
     else {
-        this->world->kill(this);
+        this->die();
         return;
     }
 

@@ -6,5 +6,5 @@
 Grass::Grass() 
     : Plant(STRENGTH) {
     chr = 'g';
-    _position = {1, 5};
+    position = {1, 5};
 }

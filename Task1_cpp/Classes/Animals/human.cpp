@@ -7,5 +7,5 @@
 Human::Human() 
     : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'H';
-    _position = {1, 1};
+    position = {1, 1};
 }

@@ -7,5 +7,5 @@
 Wolf::Wolf() 
     : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'W';
-    _position = {7, 7};
+    position = {7, 7};
 }

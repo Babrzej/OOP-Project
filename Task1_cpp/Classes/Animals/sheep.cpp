@@ -7,5 +7,5 @@
 Sheep::Sheep() 
     : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'S';
-    _position = {6, 6};
+    position = {6, 6};
 }

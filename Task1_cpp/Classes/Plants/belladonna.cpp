@@ -6,5 +6,5 @@
 Belladonna::Belladonna() 
     : Plant(STRENGTH) {
     chr = 'B';
-    _position = {6, 4};
+    position = {6, 4};
 }

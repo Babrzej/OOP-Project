@@ -6,5 +6,5 @@
 Hogweed::Hogweed() 
     : Plant(STRENGTH) {
     chr = 'H';
-    _position = {6, 3};
+    position = {6, 3};
 }

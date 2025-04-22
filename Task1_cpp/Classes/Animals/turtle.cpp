@@ -7,7 +7,7 @@
 Turtle::Turtle() 
     : Animal(STRENGTH, INITIATIVE, RANGE) {
     chr = 'T';
-    _position = {2, 2};
+    position = {2, 2};
 }
 
 void Turtle::action() {
@@ -16,7 +16,7 @@ void Turtle::action() {
 }
 
 void Turtle::collision(Organism* other) {
-    if(other->strength() > 5) {
+    if(other->getStrength() >= 5) {
         Animal::collision(other);
     }
     else {
