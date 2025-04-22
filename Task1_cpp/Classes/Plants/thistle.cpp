@@ -1,10 +1,9 @@
 #include "thistle.h"
 
 #define STRENGTH 0
-
+#define SKIN 't'
 
 Thistle::Thistle() 
-    : Plant(STRENGTH) {
-    chr = 'T';
+    : Plant(STRENGTH, SKIN) {
     position = {5, 3};
 }

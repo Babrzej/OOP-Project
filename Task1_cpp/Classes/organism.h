@@ -37,7 +37,7 @@ public:
     void setWorld(World* world);
 
 protected:
-    char chr; 
+    char skin; 
     int strength;
     int initiative;
     int age;

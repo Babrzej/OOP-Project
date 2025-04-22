@@ -1,10 +1,15 @@
 #include "belladonna.h"
 
 #define STRENGTH 99
-
+#define SKIN 'B'
 
 Belladonna::Belladonna() 
-    : Plant(STRENGTH) {
-    chr = 'B';
+    : Plant(STRENGTH, SKIN) {
     position = {6, 4};
+}
+
+void Belladonna::collision(Organism* other) {
+    this->world->announcer.eatInfo(other, this); 
+    other->die();
+    this->world->occupyGrid(this);  
 }

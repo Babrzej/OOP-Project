@@ -6,7 +6,7 @@
 class Plant : public Organism{
 public: 
     // constructors
-    Plant(int strength);
+    Plant(int strength, char skin);
     ~Plant();
     // other methods
     void action() override;

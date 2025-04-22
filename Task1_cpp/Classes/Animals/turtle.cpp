@@ -3,11 +3,11 @@
 #define STRENGTH 2
 #define INITIATIVE 1
 #define RANGE 1
+#define SKIN 'T'
 
 Turtle::Turtle() 
-    : Animal(STRENGTH, INITIATIVE, RANGE) {
-    chr = 'T';
-    position = {2, 2};
+    : Animal(STRENGTH, INITIATIVE, RANGE, SKIN) {
+    position = {2, 4};
 }
 
 void Turtle::action() {
@@ -20,6 +20,9 @@ void Turtle::collision(Organism* other) {
         Animal::collision(other);
     }
     else {
-        
+        world->announcer.fightInfo(other, this);
+        Animal* otherAnimal = dynamic_cast<Animal*>(other);
+        otherAnimal->moveBack();
+        world->announcer.reflectInfo(other);
     }
 }

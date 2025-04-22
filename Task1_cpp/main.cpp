@@ -1,6 +1,7 @@
 #include "Classes/classes.h"
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 
 int main() {
     std::srand(time(0));
@@ -20,7 +21,15 @@ int main() {
     std::vector<Organism*> organisms = {&h, &t, &a, &f, &w, &s, &th, &hw, &gu, &gr, &be};
     World world(organisms);
     world.drawWorld();
-    world.makeTurn();
-    world.drawWorld();
+
+    Announcer announcer;
+
+    bool exit = false;
+    while(!h.isDead()) {
+        world.makeTurn();
+        world.drawWorld();
+        world.announce();
+
+    }
     return 0;
 }

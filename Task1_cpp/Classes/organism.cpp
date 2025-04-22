@@ -4,7 +4,7 @@
 
 // Default constructor
 Organism::Organism(int strength, int initiative) 
-    : strength(strength), initiative(initiative), world(nullptr) {}
+    : strength(strength), initiative(initiative), world(nullptr), alive(true), age(10) {}
 
 // Destructor
 Organism::~Organism() {}
@@ -14,11 +14,13 @@ void Organism::setWorld(World* world) {
 }
 
 void Organism::draw() {
-    std::cout << chr;
+    std::cout << skin;
 }
 
 void Organism::die() {
     this->alive = false;
+    this->world->freeGrid(this);
+    this->world->announcer.killInfo(this);
 }
 bool Organism::isDead() {
     if(!this->alive) return true;

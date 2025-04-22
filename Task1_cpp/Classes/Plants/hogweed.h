@@ -4,4 +4,5 @@
 class Hogweed : public Plant {
 public:
     Hogweed();
+    void collision(Organism* other) override;
 };

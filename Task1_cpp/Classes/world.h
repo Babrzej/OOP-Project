@@ -1,5 +1,7 @@
 #pragma once
 #include "position.h"
+#include "announcer.h"
+#include <algorithm>
 #include <vector>
 class Organism; // Forward declaration of Organism
 
@@ -20,6 +22,12 @@ class World {
 
     int getWidth() const;  // Inner width
     int getHeight() const; // Inner height
+
+    void sortOrganisms();
+    Organism* getOrganismAt(Position position);
+    void announce();
+
+    Announcer announcer;
 
 private:
     std::vector<Organism*> organisms;

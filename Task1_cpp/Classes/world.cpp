@@ -18,7 +18,7 @@ int World::getWidth() const {
     return this->width;
 }
 void World::drawWorld() {
-    //system("cls");
+    system("cls");
     // Draw the top border
     for (int x = 0; x < width + 2; x++) { // Add 2 for borders
         std::cout << '*';
@@ -29,16 +29,9 @@ void World::drawWorld() {
     for (int y = 0; y < height; y++) {
         std::cout << '*'; // Left border
         for (int x = 0; x < width; x++) {
-            bool organismFound = false;
-            for (Organism* organism : organisms) {
-                Position pos = organism->getPosition(); // Use getter
-                if (pos.x == x && pos.y == y) {
-                    organism->draw(); // Draw the organism
-                    organismFound = true;
-                    break;
-                }
-            }
-            if (!organismFound) {
+            if (grid[x][y].occupied && !grid[x][y].organism->isDead()) {
+                grid[x][y].organism->draw(); // Draw the organism
+            } else {
                 std::cout << ' '; // Empty space
             }
         }
@@ -54,13 +47,20 @@ void World::drawWorld() {
 }
 
 void World::makeTurn() {
+    sortOrganisms();
     for(Organism* organism : organisms) {
         organism->action();
         if(this->grid[organism->getPosition().x][organism->getPosition().y].occupied == true) {
-            organism->collision(this->grid[organism->getPosition().x][organism->getPosition().y].organism);
+            Organism* other = grid[organism->getPosition().x][organism->getPosition().y].organism;
+            other->collision(organism);
         }
-        else this->occupyGrid(organism);
+        else {
+            this->occupyGrid(organism);
+        }
+        this->kill();
+        
     }
+    
 }
 
 std::vector<Organism*> World::getOrganisms() {
@@ -72,7 +72,6 @@ void World::kill() {
     for (auto it = organisms.begin(); it != organisms.end(); ++it) {
         if ((*it)->isDead()) {
             organisms.erase(it);
-            delete (*it);
             break;
         }
     }
@@ -93,4 +92,23 @@ void World::occupyGrid(Organism* organism) {
 bool World::isGridOccupied(Position pos) {
     if(grid[pos.x][pos.y].occupied) return true;
     return false;
+}
+
+void World::sortOrganisms() {
+    std::sort(organisms.begin(), organisms.end(), [](Organism* a, Organism* b) {
+        // Sort by initiative first (descending)
+        if (a->getInitiative() != b->getInitiative()) {
+            return a->getInitiative() > b->getInitiative();
+        }
+        // If initiative is the same, sort by age (descending)
+        return a->getAge() > b->getAge();
+    });
+}
+
+Organism* World::getOrganismAt(Position position) {
+    return grid[position.x][position.y].organism;
+}
+
+void World::announce() {
+    this->announcer.announce();
 }

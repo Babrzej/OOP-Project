@@ -8,13 +8,17 @@
 class Animal : public Organism {
     public:
         // constructors
-        Animal(int strength, int initiative, int range);
+        Animal(int strength, int initiative, int range, char skin);
 
         // other methods
         void action() override;
         void collision(Organism* other) override;
+        Position getNewValidPosition();
+        void move();
         void moveBack();
-    private:
+
+
+    protected:
         Direction restriction;
         int range;
 };
