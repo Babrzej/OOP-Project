@@ -5,4 +5,5 @@ class Thistle : public Plant {
 public:
     Thistle();
     ~Thistle();
+    void action() override;
 };

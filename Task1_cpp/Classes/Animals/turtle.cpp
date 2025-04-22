@@ -18,8 +18,12 @@ void Turtle::action() {
 }
 
 void Turtle::collision(Organism* other) {
-    if(other->getStrength() >= 5) {
-        Animal::collision(other);
+    if(dynamic_cast<Turtle*>(other)) {
+        static_cast<Animal*>(other)->moveBack();
+        this->giveBirth();
+    } 
+    else if(other->getStrength() >= 5) {
+        Animal::fight(other);
     }
     else {
         world->announcer.fightInfo(other, this);

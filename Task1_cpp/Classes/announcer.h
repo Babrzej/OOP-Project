@@ -20,6 +20,8 @@ public:
     void reflectInfo(Organism* organism);
     void boostInfo(Organism* organism);
     void powerInfo(std::string state);
+    void birthInfo(Organism* organism);
+    void sowInfo(Organism* organism);
 
-
+    void custom(std::string custom);
 };

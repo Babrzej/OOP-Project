@@ -4,7 +4,7 @@
 
 // Default constructor
 Organism::Organism(int strength, int initiative) 
-    : strength(strength), initiative(initiative), world(nullptr), alive(true), age(10) {}
+    : strength(strength), initiative(initiative), world(nullptr), alive(true), age(0), range(1) {}
 
 // Destructor
 Organism::~Organism() {}
@@ -36,6 +36,36 @@ Position Organism::getRandomValidPosition() {
             return newPos;
         }
     }
+}
+
+Position Organism::getNewValidPosition() {
+    int drc = std::rand() % static_cast<int>(Direction::COUNT);
+    Direction direction = static_cast<Direction>(drc);
+
+    for(int i = 0; i < static_cast<int>(Direction::COUNT); i++) {
+        Position newPos = getPosition();
+        direction = static_cast<Direction>((direction + i) % static_cast<int>(Direction::COUNT));
+        switch (direction) {
+            case UP:
+                newPos.y += this->range;
+                break;
+            case DOWN:
+                newPos.y += this->range;
+                break;
+            case LEFT:
+                newPos.x -= this->range;
+                break;
+            case RIGHT:
+                newPos.x += this->range;
+                break;
+        }
+        if(newPos.x >= 0 && newPos.x < this->world->getWidth()
+        && newPos.y >= 0 && newPos.y < this->world->getHeight()
+        && !this->world->isGridOccupied(newPos)) return newPos;
+        
+        
+    }
+    return position;
 }
 
 // Getters

@@ -23,7 +23,7 @@ Position Fox::getNewValidPosition() {
 
     for (int i = 0; i < static_cast<int>(Direction::COUNT); i++) {
         Position newPos = getPosition();
-        direction = static_cast<Direction>((direction + 1) % static_cast<int>(Direction::COUNT));
+        direction = static_cast<Direction>((direction + i) % static_cast<int>(Direction::COUNT));
         switch (direction) {
             case UP:
                 newPos.y -= this->range; // Move up

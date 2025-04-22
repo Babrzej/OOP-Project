@@ -9,3 +9,9 @@ Thistle::Thistle()
 }
 
 Thistle::~Thistle() {}
+
+void Thistle::action() {
+    Plant::action();
+    this->sow();
+    this->sow();
+}

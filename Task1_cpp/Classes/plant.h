@@ -11,4 +11,5 @@ public:
     // other methods
     void action() override;
     void collision(Organism* other) override;
+    void sow();
 };

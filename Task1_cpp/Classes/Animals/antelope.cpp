@@ -13,8 +13,12 @@ Antelope::Antelope()
 Antelope::~Antelope() {}
 
 void Antelope::collision(Organism* other) {
-    if (std::rand() % 2 == 0) {
-        Animal::collision(other);
+    if(dynamic_cast<Antelope*>(other)) {
+        static_cast<Animal*>(other)->moveBack();
+        this->giveBirth();
+    }
+    else if (std::rand() % 2 == 0) {
+        Animal::fight(other);
     }
     else {
         world->announcer.fightInfo(other, this);

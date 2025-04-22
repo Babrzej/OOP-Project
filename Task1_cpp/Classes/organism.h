@@ -20,6 +20,7 @@ public:
     bool isDead();
     void die();
     Position getRandomValidPosition();
+    virtual Position getNewValidPosition();
     
 
     // Getters
@@ -40,6 +41,7 @@ protected:
     char skin; 
     int strength;
     int initiative;
+    int range;
     int age;
     bool alive;
     Position position, prevPosition;

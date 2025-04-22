@@ -18,7 +18,12 @@ int main() {
     Grass gr1, gr2, gr3;
     Belladonna be1, be2, be3;
 
+    Antelope sheep[30];
+
     std::vector<Organism*> organisms = {&h, &t1, &a1, &f1, &w1, &s1, &th1, &hw1, &gu1, &gr1, &be1, &t2, &a2, &f2, &w2, &s2, &th2, &hw2, &gu2, &gr2, &be2, &t3, &a3, &f3, &w3, &s3, &th3, &hw3, &gu3, &gr3, &be3};
+    // for(Antelope& shep : sheep) {
+    //     organisms.push_back(&shep);
+    // }
     World world(organisms);
     world.drawWorld();
 

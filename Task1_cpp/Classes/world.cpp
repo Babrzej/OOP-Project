@@ -76,7 +76,6 @@ std::vector<Organism*> World::getOrganisms() {
 }
 
 void World::kill() {
-    // Remove the organism from the vector
     for (auto it = organisms.begin(); it != organisms.end(); ++it) {
         if ((*it)->isDead()) {
             organisms.erase(it);
@@ -103,18 +102,24 @@ bool World::isGridOccupied(Position pos) {
 }
 
 void World::sortOrganisms() {
+    for(Organism* organism : organismsToAdd) {
+        organisms.push_back(organism);
+    }
+    organismsToAdd.clear();
     std::sort(organisms.begin(), organisms.end(), [](Organism* a, Organism* b) {
-        // Sort by initiative first (descending)
         if (a->getInitiative() != b->getInitiative()) {
             return a->getInitiative() > b->getInitiative();
         }
-        // If initiative is the same, sort by age (descending)
         return a->getAge() > b->getAge();
     });
 }
 
 Organism* World::getOrganismAt(Position position) {
     return grid[position.x][position.y].organism;
+}
+
+void World::addOrganism(Organism* organism) {
+    organismsToAdd.push_back(organism);
 }
 
 void World::announce() {

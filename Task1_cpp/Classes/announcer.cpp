@@ -83,3 +83,17 @@ void Announcer::powerInfo(std::string state) {
     std::string info = "Human's antelope's speed is " + state + "activated!";
     announcements.push_back(info); 
 }
+
+void Announcer::birthInfo(Organism* organism) {
+    std::string info = "New " + getType(organism) + " has been born.";
+    announcements.push_back(info);
+}
+
+void Announcer::sowInfo(Organism* organism) {
+    std::string info = "New " + getType(organism) + " has been sown.";
+    announcements.push_back(info);
+}
+
+void Announcer::custom(std::string custom) {
+    announcements.push_back(custom);
+}

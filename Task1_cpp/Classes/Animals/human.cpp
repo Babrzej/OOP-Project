@@ -4,7 +4,7 @@
 #define STRENGTH 5
 #define INITIATIVE 4
 #define RANGE 1
-#define SKIN 'P'
+#define SKIN '@'
 
 #define ARROW_KEY 224
 #define KEY_UP 72

@@ -12,13 +12,13 @@ class Animal : public Organism {
 
         void action() override;
         void collision(Organism* other) override;
-        virtual Position getNewValidPosition();
         void move();
         void moveBack();
+        void fight(Organism* other);
+        void giveBirth();
         
 
 
     protected:
         Direction restriction;
-        int range;
 };

@@ -1,5 +1,7 @@
 #include "animal.h"
+#include "Animals/animals.h"
 #include <cstdlib>
+#include <typeinfo>
 
 Animal::Animal(int strength, int initiative, int range, char skin)
     : Organism(strength, initiative) {
@@ -57,46 +59,14 @@ void Animal::action() {
     }
 
 void Animal::collision(Organism* other) {
-    world->announcer.fightInfo(other, this); 
-    if(this->getStrength() > other->getStrength()) {
-        other->die();
-        world->occupyGrid(this);        
+    if(typeid(*this) == typeid(*other)) {
+        static_cast<Animal*>(other)->moveBack();
+        this->giveBirth();
     }
     else {
-        this->die();
-        world->occupyGrid(other);
-        return;
+        this->fight(other);
     }
 
-
-}
-
-Position Animal::getNewValidPosition() {
-    int drc = std::rand() % static_cast<int>(Direction::COUNT);
-    Direction direction = static_cast<Direction>(drc);
-
-    for(int i = 0; i < 3; i++) {
-        Position newPos = getPosition();
-        direction = static_cast<Direction>(direction + 1);
-        direction = direction == COUNT ? static_cast<Direction>(direction + 1) : direction;
-        switch (direction) {
-            case UP:
-                newPos.y += this->range;
-                break;
-            case DOWN:
-                newPos.y += this->range;
-                break;
-            case LEFT:
-                newPos.x -= this->range;
-                break;
-            case RIGHT:
-                newPos.x += this->range;
-                break;
-        }
-        if(!this->world->isGridOccupied(newPos)) return newPos;
-        
-    }
-    return position;
 }
 
 void Animal::move() {
@@ -113,6 +83,43 @@ void Animal::moveBack() {
     this->world->occupyGrid(this);
 }
 
+void Animal::fight(Organism* other) {
+    world->announcer.fightInfo(other, this); 
+    if(this->getStrength() > other->getStrength()) {
+        other->die();
+        world->occupyGrid(this);        
+    }
+    else {
+        this->die();
+        world->occupyGrid(other);
+        return;
+    }
+}
+void Animal::giveBirth() {
+    Animal* baby;
+    if(dynamic_cast<Antelope*>(this)) {
+        baby = new Antelope;
+    } else if (dynamic_cast<Fox*>(this)){
+        baby = new Fox;
+    } else if (dynamic_cast<Sheep*>(this)){
+        baby = new Sheep;
+    } else if (dynamic_cast<Turtle*>(this)){
+        baby = new Turtle;
+    } else if (dynamic_cast<Wolf*>(this)){
+        baby = new Wolf;
+    }
+    baby->setWorld(this->world);
+    baby->setPosition(this->getPosition());
+    Position babyPos = this->getNewValidPosition();
+    if(this->position == babyPos) {
+        delete baby;
+        return;
+    }
+    this->world->announcer.birthInfo(this);
+    this->world->addOrganism(baby);
+    baby->setPosition(babyPos);
+    this->world->occupyGrid(baby);
+}
 
 
 

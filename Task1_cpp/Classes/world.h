@@ -26,12 +26,14 @@ class World {
 
     void sortOrganisms();
     Organism* getOrganismAt(Position position);
+    void addOrganism(Organism* organism);
     void announce();
 
     Announcer announcer;
 
 private:
     std::vector<Organism*> organisms;
+    std::vector<Organism*> organismsToAdd;
     static const int width = 30, height = 12; // Inner dimensions (excluding borders)
     Grid grid[width][height];
 };
