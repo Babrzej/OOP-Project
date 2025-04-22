@@ -5,4 +5,5 @@ class Fox : public Animal {
 public:
     Fox();
     void action() override;
+    Position getNewValidPosition() override;
 };

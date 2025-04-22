@@ -10,6 +10,7 @@
 #define KEY_DOWN 80
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
+#define KEY_q 113
 
 Human::Human() 
     : Animal(STRENGTH, INITIATIVE, RANGE, SKIN) {
@@ -19,11 +20,10 @@ Human::Human()
 void Human::action() {
 
     this->world->freeGrid(this); // Free the previous grid cell
+    this->prevPosition = this->position;
 
     bool validMove = false;
     while (!validMove) {
-        std::cout << "Use arrow keys to move the Human (P). Press any other key to stay in place." << std::endl;
-
         int key = _getch(); // Get the first key press
         Direction direction = COUNT;
 
@@ -41,8 +41,9 @@ void Human::action() {
             case KEY_RIGHT:
                 direction = RIGHT;
                 break;
+            case KEY_q:
+                this->die();
             default:
-                std::cout << "Invalid key. Staying in place." << std::endl;
                 return; // Exit if an invalid key is pressed
         }
 
@@ -69,8 +70,7 @@ void Human::action() {
         } else {
             // Revert to the previous position and retry
             this->position = this->prevPosition;
-            std::cout << "Move is invalid or blocked. Try again." << std::endl;
         }
     }
-    this->world->announcer.moveInfo(this); // Announce the move
+    //this->world->announcer.moveInfo(this); // Announce the move
 }

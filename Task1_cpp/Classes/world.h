@@ -31,6 +31,6 @@ class World {
 
 private:
     std::vector<Organism*> organisms;
-    static const int width = 8, height = 8; // Inner dimensions (excluding borders)
+    static const int width = 30, height = 12; // Inner dimensions (excluding borders)
     Grid grid[width][height];
 };

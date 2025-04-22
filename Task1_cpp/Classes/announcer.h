@@ -12,7 +12,7 @@ public:
     Announcer();
     void announce();
     std::string getType(Organism* organsim);
-    void moveInfo(Organism* organism);
+    // void moveInfo(Organism* organism);
     void fightInfo(Organism* attacker, Organism* defender);
     void eatInfo(Organism* animal, Organism* plant);
     void killInfo(Organism* organism);

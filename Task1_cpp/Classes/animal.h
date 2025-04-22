@@ -13,7 +13,7 @@ class Animal : public Organism {
         // other methods
         void action() override;
         void collision(Organism* other) override;
-        Position getNewValidPosition();
+        virtual Position getNewValidPosition();
         void move();
         void moveBack();
 

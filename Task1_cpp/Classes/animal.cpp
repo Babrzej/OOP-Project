@@ -51,7 +51,7 @@ Animal::Animal(int strength, int initiative, int range, char skin)
                 this->restriction = direction; // Restrict the invalid direction
             }   
         }
-        this->world->announcer.moveInfo(this);
+        //this->world->announcer.moveInfo(this);
     }
 
 void Animal::collision(Organism* other) {
@@ -98,11 +98,11 @@ Position Animal::getNewValidPosition() {
 }
 
 void Animal::move() {
-    Position newPos = getNewValidPosition();
-    if(newPos == position) return;
+    this->prevPosition = this->position;
     this->world->freeGrid(this);
+    Position newPos = getNewValidPosition();
     this->position = newPos;
-    this->world->occupyGrid(this);
+    //this->world->occupyGrid(this);
 }
 
 void Animal::moveBack() {
@@ -110,7 +110,6 @@ void Animal::moveBack() {
     this->position = this->prevPosition;
     this->world->occupyGrid(this);
 }
-
 
 
 

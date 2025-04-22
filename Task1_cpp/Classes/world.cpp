@@ -6,6 +6,7 @@ World::World(std::vector<Organism*> organisms)
     : organisms(organisms) {
     for(Organism* organism : organisms) {
         organism->setWorld(this);
+        organism->setPosition(organism->getRandomValidPosition());
         this->occupyGrid(organism);
     }
 }
@@ -50,7 +51,8 @@ void World::makeTurn() {
     sortOrganisms();
     for(Organism* organism : organisms) {
         organism->action();
-        if(this->grid[organism->getPosition().x][organism->getPosition().y].occupied == true) {
+        Position pos = organism->getPosition();
+        if(grid[pos.x][pos.y].occupied && grid[pos.x][pos.y].organism != organism) {
             Organism* other = grid[organism->getPosition().x][organism->getPosition().y].organism;
             other->collision(organism);
         }

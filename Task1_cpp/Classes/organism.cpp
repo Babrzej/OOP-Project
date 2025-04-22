@@ -27,6 +27,17 @@ bool Organism::isDead() {
     return false;
 }
 
+Position Organism::getRandomValidPosition() {
+    while(true) {
+        int x = std::rand() % this->world->getWidth();
+        int y = std::rand() % this->world->getHeight();
+        Position newPos = {x, y};
+        if(!this->world->isGridOccupied(newPos)) {
+            return newPos;
+        }
+    }
+}
+
 // Getters
 int Organism::getStrength() const {
     return strength;

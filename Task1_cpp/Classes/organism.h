@@ -19,6 +19,7 @@ public:
     virtual void draw();
     void die();
     bool isDead();
+    Position getRandomValidPosition();
     
 
     // Getters
