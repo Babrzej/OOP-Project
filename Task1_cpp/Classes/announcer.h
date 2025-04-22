@@ -19,6 +19,7 @@ public:
     void escapeInfo(Organism* organism);
     void reflectInfo(Organism* organism);
     void boostInfo(Organism* organism);
+    void powerInfo(std::string state);
 
 
 };

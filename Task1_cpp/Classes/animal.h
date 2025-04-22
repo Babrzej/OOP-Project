@@ -16,6 +16,7 @@ class Animal : public Organism {
         virtual Position getNewValidPosition();
         void move();
         void moveBack();
+        
 
 
     protected:

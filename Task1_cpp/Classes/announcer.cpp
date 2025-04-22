@@ -76,3 +76,8 @@ void Announcer::boostInfo(Organism* organism) {
     std::string info = getType(organism) + " has eaten Guarana, strength increased by 3!";
     announcements.push_back(info);
 }
+
+void Announcer::powerInfo(std::string state) {
+    std::string info = "Human's antelope's speed is " + state + "activated!";
+    announcements.push_back(info); 
+}
