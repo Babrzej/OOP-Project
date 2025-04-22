@@ -13,12 +13,12 @@ class Organism {
 
 public:
     Organism(int strength, int initiative);
-    ~Organism();
+    virtual ~Organism();
     virtual void action() = 0; 
     virtual void collision(Organism* other) = 0; 
     virtual void draw();
-    void die();
     bool isDead();
+    void die();
     Position getRandomValidPosition();
     
 
@@ -34,7 +34,6 @@ public:
     void setInitiative(int initiative);
     void setAge(int age);
     void setPosition(const Position& position);
-    void setPrevPosition(const Position& prevPosition);
     void setWorld(World* world);
 
 protected:
@@ -44,5 +43,5 @@ protected:
     int age;
     bool alive;
     Position position, prevPosition;
-    World* world = nullptr;
+    World* world;
 };

@@ -8,6 +8,8 @@ Belladonna::Belladonna()
     position = {6, 4};
 }
 
+Belladonna::~Belladonna() {}
+
 void Belladonna::collision(Organism* other) {
     this->world->announcer.eatInfo(other, this); 
     other->die();

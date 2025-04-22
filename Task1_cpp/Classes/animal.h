@@ -7,10 +7,9 @@
 
 class Animal : public Organism {
     public:
-        // constructors
         Animal(int strength, int initiative, int range, char skin);
+        ~Animal();
 
-        // other methods
         void action() override;
         void collision(Organism* other) override;
         virtual Position getNewValidPosition();

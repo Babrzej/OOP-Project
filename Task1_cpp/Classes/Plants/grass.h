@@ -4,4 +4,5 @@
 class Grass : public Plant {
 public:
     Grass();
+    ~Grass();
 };

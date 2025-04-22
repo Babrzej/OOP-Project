@@ -10,6 +10,8 @@ Turtle::Turtle()
     position = {2, 4};
 }
 
+Turtle::~Turtle() {}
+
 void Turtle::action() {
     if (std::rand() % 4 == 0) Animal::action();
     else this->world->freeGrid(this); 

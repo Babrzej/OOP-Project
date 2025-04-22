@@ -4,4 +4,5 @@
 class Sheep : public Animal {
 public:
     Sheep();
+    ~Sheep();
 };

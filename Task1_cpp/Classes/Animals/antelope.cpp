@@ -10,6 +10,8 @@ Antelope::Antelope()
     position = {3, 3};
 }
 
+Antelope::~Antelope() {}
+
 void Antelope::collision(Organism* other) {
     if (std::rand() % 2 == 0) {
         Animal::collision(other);

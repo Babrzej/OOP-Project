@@ -10,6 +10,8 @@ Guarana::Guarana()
     position = {2, 7};
 }
 
+Guarana::~Guarana() {}
+
 void Guarana::collision(Organism* other) {
     world->announcer.boostInfo(other);
     this->die();

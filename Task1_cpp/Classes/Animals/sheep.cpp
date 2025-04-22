@@ -9,3 +9,5 @@ Sheep::Sheep()
     : Animal(STRENGTH, INITIATIVE, RANGE, SKIN) {
     position = {3, 4};
 }
+
+Sheep::~Sheep() {}

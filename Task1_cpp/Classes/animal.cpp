@@ -5,9 +5,11 @@ Animal::Animal(int strength, int initiative, int range, char skin)
     : Organism(strength, initiative) {
         this->range = range;
         this->skin = skin;
-    }
+}
 
-    void Animal::action() {
+Animal::~Animal() {}
+
+void Animal::action() {
         this->restriction = COUNT; // Reset restriction
         this->prevPosition = this->position; // Save the previous position
     

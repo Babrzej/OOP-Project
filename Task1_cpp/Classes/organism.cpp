@@ -76,9 +76,6 @@ void Organism::setPosition(const Position& position) {
     this->position = position;
 }
 
-void Organism::setPrevPosition(const Position& prevPosition) {
-    this->prevPosition = prevPosition;
-}
 
 
 

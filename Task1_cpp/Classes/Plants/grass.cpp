@@ -7,3 +7,5 @@ Grass::Grass()
     : Plant(STRENGTH, SKIN) {
     position = {1, 5};
 }
+
+Grass::~Grass() {}

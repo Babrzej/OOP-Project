@@ -4,4 +4,5 @@
 class Thistle : public Plant {
 public:
     Thistle();
+    ~Thistle();
 };

@@ -8,6 +8,8 @@ Hogweed::Hogweed()
     position = {6, 3};
 }
 
+Hogweed::~Hogweed() {}
+
 void Hogweed::collision(Organism* other) {
     this->world->announcer.eatInfo(other, this); 
     other->die();

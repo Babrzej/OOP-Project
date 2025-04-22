@@ -25,6 +25,8 @@ Human::Human()
     this->cooldown = COOLDOWN;
 }
 
+Human::~Human() {}
+
 int Human::getDuration() const {
     return this->duration;
 }

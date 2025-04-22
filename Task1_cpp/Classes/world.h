@@ -12,6 +12,7 @@ class World {
         bool occupied = false;
     } Grid;
     World(std::vector<Organism*> organisms);
+    ~World();
     void makeTurn();
     void drawWorld();
     std::vector<Organism*> getOrganisms();

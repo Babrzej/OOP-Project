@@ -11,6 +11,8 @@ Fox::Fox()
     position = {4, 3};
 }
 
+Fox::~Fox() {}
+
 void Fox::action() {
     Animal::move();
 }

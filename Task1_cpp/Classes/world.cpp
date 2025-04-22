@@ -11,6 +11,12 @@ World::World(std::vector<Organism*> organisms)
     }
 }
 
+World::~World() {
+    for (Organism* organism : organisms) {
+        delete organism;
+    }
+}
+
 int World::getHeight() const {
     return this->height;
 }

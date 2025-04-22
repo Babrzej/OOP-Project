@@ -7,3 +7,5 @@ Thistle::Thistle()
     : Plant(STRENGTH, SKIN) {
     position = {5, 3};
 }
+
+Thistle::~Thistle() {}

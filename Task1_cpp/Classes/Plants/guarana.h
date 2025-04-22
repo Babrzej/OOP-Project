@@ -4,5 +4,6 @@
 class Guarana : public Plant {
 public:
     Guarana();
+    ~Guarana();
     void collision(Organism* other) override;
 };

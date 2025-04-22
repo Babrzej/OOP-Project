@@ -8,11 +8,11 @@ class Organism;
 class Announcer {
 private:
     std::vector<std::string> announcements;
+    std::string getType(Organism* organsim);
 public:
     Announcer();
+    ~Announcer();
     void announce();
-    std::string getType(Organism* organsim);
-    // void moveInfo(Organism* organism);
     void fightInfo(Organism* attacker, Organism* defender);
     void eatInfo(Organism* animal, Organism* plant);
     void killInfo(Organism* organism);

@@ -9,3 +9,5 @@ Wolf::Wolf()
     : Animal(STRENGTH, INITIATIVE, RANGE, SKIN) {
     position = {7, 7};
 }
+
+Wolf::~Wolf() {}

@@ -4,6 +4,8 @@
 
 Announcer::Announcer() = default;
 
+Announcer::~Announcer() {}
+
 void Announcer::announce() {
     for(std::string announcement : announcements) {
         std::cout << announcement << std::endl;
