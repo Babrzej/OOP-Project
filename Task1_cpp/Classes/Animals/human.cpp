@@ -22,7 +22,7 @@
 Human::Human() 
     : Animal(STRENGTH, INITIATIVE, RANGE, SKIN) {
     this->duration = -1;
-    this->cooldown = COOLDOWN;
+    this->cooldown = COOLDOWN - DURATION;
 }
 
 Human::~Human() {}
@@ -68,7 +68,7 @@ void Human::action() {
         }
         break;
         case KEY_q:
-            this->die();
+            std::exit(0);
             break;
         case KEY_p:
             this->activatePower();

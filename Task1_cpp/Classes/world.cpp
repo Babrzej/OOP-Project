@@ -2,6 +2,8 @@
 #include "organism.h" // Include Organism here
 #include <iostream>
 
+World::World() {}
+
 World::World(std::vector<Organism*> organisms) 
     : organisms(organisms) {
     for(Organism* organism : organisms) {
@@ -26,6 +28,7 @@ int World::getWidth() const {
 }
 void World::drawWorld() {
     system("cls");
+    std::cout << "BLAZEJ PITULA S203549 - Organism Simulation" << std::endl;
     // Draw the top border
     for (int x = 0; x < width + 2; x++) { // Add 2 for borders
         std::cout << '*';

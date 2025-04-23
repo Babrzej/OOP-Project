@@ -3,7 +3,11 @@
 #include "announcer.h"
 #include <algorithm>
 #include <vector>
-class Organism; // Forward declaration of Organism
+
+#define WIDTH 30
+#define HEIGHT 12
+
+class Organism;
 
 class World {
     public:
@@ -11,14 +15,15 @@ class World {
         Organism* organism = nullptr;
         bool occupied = false;
     } Grid;
+    World();
     World(std::vector<Organism*> organisms);
     ~World();
     void makeTurn();
     void drawWorld();
     std::vector<Organism*> getOrganisms();
     void kill();                         // Method to remove organisms
-    void freeGrid(Organism* organism);   // Free a grid cell based on organism
-    void occupyGrid(Organism* organism); // Occupy a grid cell based on organism
+    void freeGrid(Organism* organism);   
+    void occupyGrid(Organism* organism); 
     bool isGridOccupied(Position Pos);
 
     int getWidth() const;  // Inner width
@@ -34,6 +39,6 @@ class World {
 private:
     std::vector<Organism*> organisms;
     std::vector<Organism*> organismsToAdd;
-    static const int width = 30, height = 12; // Inner dimensions (excluding borders)
+    static const int width = WIDTH, height = HEIGHT;
     Grid grid[width][height];
 };
