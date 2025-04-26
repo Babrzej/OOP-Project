@@ -13,6 +13,7 @@
 #define KEY_RIGHT 77
 #define KEY_q 113
 #define KEY_p 112
+#define KEY_s 115
 
 #define DURATION 5
 #define COOLDOWN 5 + DURATION
@@ -35,9 +36,21 @@ int Human::getCooldown() const {
     return this->cooldown;
 }
 
-void Human::action() {
+void Human::setDuration(int duration) {
+    this->duration = duration;
+}
 
-    this->world->freeGrid(this); // Free the previous grid cell
+void Human::setCooldown(int cooldown) {
+    this->cooldown = cooldown;
+}
+
+void Human::passKey(int key) {
+    this->key = key;
+}
+
+void Human::action() {
+    this->age++;
+    this->world->freeGrid(this); 
     this->prevPosition = this->position;
     this->cooldown--;
     if(this->duration >=0) {
@@ -45,13 +58,12 @@ void Human::action() {
         this->duration--;
     }
 
-    int key = _getch(); // Get the first key press
     Direction direction = COUNT;
 
     // Map arrow keys to directions
-    switch(key) {
+    switch(this->key) {
         case ARROW_KEY:
-        key = _getch();
+        this->key = _getch();
         switch (key) {
             case KEY_UP:
                 direction = UP;
@@ -67,14 +79,11 @@ void Human::action() {
                 break;
         }
         break;
-        case KEY_q:
-            std::exit(0);
-            break;
         case KEY_p:
             this->activatePower();
             break;
         default:
-            return; // Exit if an invalid key is pressed
+            return;
         }
         // Move the human based on the chosen direction
         switch (direction) {
@@ -96,11 +105,10 @@ void Human::action() {
         if (position.x >= 0 && position.x < world->getWidth() &&
             position.y >= 0 && position.y < world->getHeight()) {
         } else {
-            // Revert to the previous position and retry
+            // Revert to the previous position
             this->position = this->prevPosition;
         }
     }
-    //this->world->announcer.moveInfo(this); // Announce the move
 
 void Human::activatePower() {
     if(this->cooldown <= 0) {
@@ -113,12 +121,12 @@ void Human::activatePower() {
 
 void Human::whilePowered() {
     if (duration > 2) {
-        this->range = POWERED_RANGE; // Full power for the first few turns
+        this->range = POWERED_RANGE;
     } else if (duration > 0) {
-        this->range = (std::rand() % POWERED_RANGE) + 1; // Reduced power for the last few turns
+        this->range = (std::rand() % POWERED_RANGE) + 1;
     }
 
-    if (this->duration == 1) { // Deactivate power on the last turn
+    if (this->duration == 1) { 
         deactivatePower();
     }
 }

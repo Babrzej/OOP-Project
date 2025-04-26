@@ -8,6 +8,9 @@ public:
     void action() override;
     int getDuration() const;
     int getCooldown() const;
+    void setDuration(int duration);
+    void setCooldown(int cooldown);
+    void passKey(int key);
 
 private:
     void activatePower();
@@ -15,4 +18,5 @@ private:
     void deactivatePower();
     int duration;
     int cooldown;
+    int key;
 };

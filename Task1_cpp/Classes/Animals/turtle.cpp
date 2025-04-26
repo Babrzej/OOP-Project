@@ -14,7 +14,10 @@ Turtle::~Turtle() {}
 
 void Turtle::action() {
     if (std::rand() % 4 == 0) Animal::action();
-    else this->world->freeGrid(this); 
+    else {
+        this->world->freeGrid(this);
+        this->age++;
+    } 
 }
 
 void Turtle::collision(Organism* other) {

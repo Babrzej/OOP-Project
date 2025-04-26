@@ -13,6 +13,7 @@ Plant::Plant(int strength, char skin)
 Plant::~Plant() {}
 
 void Plant::action() {
+    this->age++;
     this->world->freeGrid(this);
     this->sow();
 }

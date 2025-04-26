@@ -89,6 +89,10 @@ Position Organism::getPrevPosition() const {
     return prevPosition;
 }
 
+int Organism::getRange() const {
+    return range;
+}
+
 // Setters
 void Organism::setStrength(int strength) {
     this->strength = strength;
@@ -106,7 +110,13 @@ void Organism::setPosition(const Position& position) {
     this->position = position;
 }
 
-
+void Organism::setRange(int range) {
+    this->range = range;
+}
+    
+void Organism::setPrevPosition(const Position& prevPosition) {
+    this->prevPosition = prevPosition;
+}
 
 
 

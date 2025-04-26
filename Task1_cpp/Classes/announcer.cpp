@@ -39,10 +39,6 @@ std::string Announcer::getType(Organism* organism) {
     }
 }
 
-// void Announcer::moveInfo(Organism* organism) {
-//     std::string info = getType(organism) + " moved to fix this";
-//     announcements.push_back(info);
-// }
 
 void Announcer::fightInfo(Organism* attacker, Organism* defender) {
     std::string info = getType(attacker) + " fights with " + getType(defender) + ".";

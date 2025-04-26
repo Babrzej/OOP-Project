@@ -29,6 +29,7 @@ public:
     int getAge() const;
     Position getPosition() const;
     Position getPrevPosition() const;
+    int getRange() const;
 
     // Setters
     void setStrength(int strength);
@@ -36,6 +37,8 @@ public:
     void setAge(int age);
     void setPosition(const Position& position);
     void setWorld(World* world);
+    void setRange(int range);
+    void setPrevPosition(const Position& prevPosition);
 
 protected:
     char skin; 

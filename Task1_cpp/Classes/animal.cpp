@@ -12,13 +12,13 @@ Animal::Animal(int strength, int initiative, int range, char skin)
 Animal::~Animal() {}
 
 void Animal::action() {
+        this->age++;
         this->restriction = COUNT; // Reset restriction
-        this->prevPosition = this->position; // Save the previous position
-    
+        this->prevPosition = this->position;
         int drc;
         Direction direction = COUNT;
 
-        this->world->freeGrid(this); // Free the previous grid cell
+        this->world->freeGrid(this);
 
         // Retry until a valid position is found
         bool validMove = false;
@@ -74,7 +74,6 @@ void Animal::move() {
     this->world->freeGrid(this);
     Position newPos = getNewValidPosition();
     this->position = newPos;
-    //this->world->occupyGrid(this);
 }
 
 void Animal::moveBack() {

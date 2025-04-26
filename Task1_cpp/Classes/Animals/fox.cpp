@@ -14,6 +14,7 @@ Fox::Fox()
 Fox::~Fox() {}
 
 void Fox::action() {
+    this->age++;
     Animal::move();
 }
 
@@ -26,16 +27,16 @@ Position Fox::getNewValidPosition() {
         direction = static_cast<Direction>((direction + i) % static_cast<int>(Direction::COUNT));
         switch (direction) {
             case UP:
-                newPos.y -= this->range; // Move up
+                newPos.y -= this->range;
                 break;
             case DOWN:
-                newPos.y += this->range; // Move down
+                newPos.y += this->range;
                 break;
             case LEFT:
-                newPos.x -= this->range; // Move left
+                newPos.x -= this->range;
                 break;
             case RIGHT:
-                newPos.x += this->range; // Move right
+                newPos.x += this->range;
                 break;
         }
 
@@ -45,11 +46,9 @@ Position Fox::getNewValidPosition() {
             // Check if the grid is occupied and if the Fox can move there
             if (!this->world->isGridOccupied(newPos) ||
                 this->world->getOrganismAt(newPos)->getStrength() <= this->getStrength()) {
-                return newPos; // Return the valid position
+                return newPos;
             }
         }
     }
-
-    // If no valid position is found, return the current position
     return position;
 }
